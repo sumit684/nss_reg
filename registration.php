@@ -40,7 +40,7 @@
 <body oncontextmenu="return false" onselectstart="return false" ondragstart="return false">
 	<div class="container" style="margin:auto; border: 2px solid black; margin-top:30px; margin-bottom: 20px;width:950px;" >
 		<p align="center">
-			<img style="height:120px;"src="nsslogo.png"/><br>
+			<img style="height:120px;"src="res/images/nsslogo.png"/><br>
 
 			<span style="font-size:22px;">राष्ट्रीय सेवा योजना<br/>
 				<b>देवी अहिल्या विश्वविद्यालय, इंदौर</b></span>

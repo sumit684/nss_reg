@@ -77,12 +77,12 @@
 					<div class="col-md-2"></div>
 					<label for="example-text-input" class="col-md-2 col-form-label required">Date of Birth</label>
 					<div class="col-md-2">
-						<input class="form-control" type="date" value="" name="dob" id="dob" required>
+						<input class="form-control" type="date" value="" name="dob" id="dob" max="<?php echo date('Y-m-d');?>"required>
 					</div>
 					<label for="example-text-input" class="col-md-2 col-form-label required">Blood Group</label>
 					<div class="col-md-2">
 						<select class="form-control" id="blood_grp" name="bloodgrp" required>
-							<option value="" disabled selected hidden></option>
+							<option value="" disabled selected > Choose Blood Group</option>
 							<option value="O +ve">O +ve</option>
 							<option value="O -ve">O -ve</option>
 							<option value="AB +ve">AB +ve</option>
@@ -99,7 +99,7 @@
 					<label for="example-text-input" class="col-md-2 col-form-label required">Class</label>
 					<div class="col-md-2">
 						<select class="form-control" id="sel1" name="class" required>
-							<option value="" disabled selected hidden></option>
+							<option value="" disabled selected>Choose Year</option>
 							<option value="GEN">B.E. 1st Yr</option>
 							<option value="OBC">B.E. 2nd Yr</option>
 							<option value="SC">B.E. 3rd Yr</option>
@@ -109,7 +109,7 @@
 					<label for="example-text-input" class="col-md-2 col-form-label required">Branch</label>
 					<div class="col-md-2">
 						<select class="form-control" id="sel1" name="branch" required>
-							<option value="" disabled selected hidden></option>
+							<option value="" disabled selected> Choose Branch</option>
 							<option value="CS-A">CS-A</option>
 							<option value="CS-B">CS-B</option>
 							<option value="IT-A">IT-A</option>
@@ -196,7 +196,7 @@
 				</div>
 
 				<div align="center">
-					<button class="btn btn-success">Submit</button>
+					<button class="btn btn-primary">Submit</button>
 				</div>
 			</form>
 		</div>

@@ -1,5 +1,5 @@
 
-
+<!-- 
 <!DOCTYPE html>
 
 <html>
@@ -47,4 +47,9 @@
      <a href="#" onclick="signOut();">Sign out</a>
 
 </body>
-</html>
+</html> -->
+<?php
+header("Location: new_reg.php");
+
+
+?>

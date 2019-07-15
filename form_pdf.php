@@ -1,6 +1,46 @@
 <?php
 session_start();
-
+// if(!isset($_SESSION['name'])){
+// header("Location:new_reg.php");}
+if(isset($_POST['submit'])){
+	
+	$_SESSION['name']=strtoupper($_POST['name']);
+	$_SESSION['gender']=$_POST['gender'];
+	$_SESSION['category']=$_POST['category'];
+	$_SESSION['dob']=$_POST['dob'];
+	$_SESSION['bloodgrp']=$_POST['bloodgrp'];
+	$_SESSION['class']=$_POST['class'];
+	$_SESSION['branch']=$_POST['branch'];
+	$_SESSION['whatsappno']=$_POST['whatsappno'];
+	$_SESSION['altno']=$_POST['altno'];
+	$_SESSION['fathername']=strtoupper($_POST['fathername']);
+	$_SESSION['fatheroccupation']=strtoupper($_POST['fatheroccupation']);
+	$_SESSION['mothername']=strtoupper($_POST['mothername']);
+	$_SESSION['familyincome']=$_POST['familyincome'];
+	$_SESSION['caddr']=strtoupper($_POST['caddr']);
+	$_SESSION['paddr']=strtoupper($_POST['paddr']);
+	$_SESSION['is_nssV']=$_POST['is_nssV'];
+	$_SESSION['nssYear']=$_POST['nssYear'];
+	$_SESSION['t1']=$_POST['t1'];
+	$_SESSION['t1a']=$_POST['t1a'];
+	$_SESSION['t1b']=$_POST['t1b'];
+	$_SESSION['t2']=$_POST['t2'];
+	$_SESSION['t2a']=$_POST['t2a'];
+	$_SESSION['t2b']=$_POST['t2b'];
+	$_SESSION['t3']=$_POST['t3'];
+	$_SESSION['t3a']=$_POST['t3a'];
+	$_SESSION['t3b']=$_POST['t3b'];
+	$_SESSION['t4']=$_POST['t4'];
+	$_SESSION['t4a']=$_POST['t4a'];
+	$_SESSION['t4b']=$_POST['t4b'];
+	$_SESSION['t5']=$_POST['t5'];
+	$_SESSION['t5a']=$_POST['t5a'];
+	$_SESSION['t5b']=$_POST['t5b'];
+	$_SESSION['t6']=$_POST['t6'];
+	$_SESSION['t6a']=$_POST['t6a'];
+	$_SESSION['t6b']=$_POST['t6b'];
+	
+}
 ?>
 <!DOCTYPE html>
 
@@ -8,7 +48,7 @@ session_start();
 <head>
 	
 	
-	<title>NSS Registration 2019-20</title>
+	<title>NSS Registration 2019-20_<?php echo $_SESSION['name'];?>_<?php echo date("d-m-y");?></title>
 	<link rel="icon" type="image/jpg" href="nsslogo.png">
 	<meta name="google" content="notranslate">
 	<meta charset="utf-8">
@@ -22,17 +62,18 @@ session_start();
 		li{
 			margin-left: 20px;
 			padding-left: 20px;
-			margin-top:10px;
+			margin-top:6px;
 		}
 		thead tr{
 			font-weight: 700;
 		}
 		.container{
-			padding: 20px;
+			padding: 5px;
 		}
 		
 		.data{
-			
+			font-size: 18px;
+			font-family: serif;
 			border-bottom: 1px solid black;"
 		}
 	</style>
@@ -188,6 +229,9 @@ session_start();
 									case 'E&TC-A':
 									echo "Elec. & Telecomm. Engg - 'A'";
 									break;
+									case 'E&TC-B':
+									echo "Elec. & Telecomm. Engg - 'B'";
+									break;
 									case 'E&I':
 									echo "Elec. & Inst. Engg";
 									break;
@@ -242,118 +286,137 @@ session_start();
 							<div class="col-md-1">
 								<?php switch ($_SESSION['is_nssV']) {
 									case 'Yes':
-										echo 'हाँ';
-										break;
+									echo 'हाँ';
+									break;
 									case 'No':
-										echo 'नहीं';
-										break;
+									echo 'नहीं';
+									break;
 									default:
-										echo '';
-										break;
+									echo '';
+									break;
 								};?>
 							</div>
 						</div>
-							<span style="margin-left: 60%">
-								<b>(यदि हाँ तो कब से) :- </b>
-								<span class="data">
-									<?php echo $_SESSION['nssYear'];?>
-								</span>
-								 से 
+						<span style="margin-left: 60%">
+							<b>(यदि हाँ तो कब से) :- </b>
+							<span class="data">
+								<?php echo $_SESSION['nssYear'];?>
 							</span>
-						</li>
-							<li>गतिविधियां जिनमें रूचि हो :-
-								<table class="table table-bordered table-responsive">
-									<thead>
+							से 
+						</span>
+					</li>
+					<li>
+						<b>गतिविधियां जिनमें रूचि हो :-</b>
+						<table class="table table-bordered table-responsive">
+							<thead>
+								<tr>
+									<td>क्रमांक</td>
+									<td>रूचि की गतिविधियां </td>
+									<td>गतिविधि की जानकारी </td>
+									<td>भाग लिया है या नहीं </td>
+									<td>नेतृत्व/भागीदारी भागीदारी की इच्छा </td>
+								</thead>
+								<tbody>
+									<tr>
+										<td>1.</td>
+										<td>क्रीडा एवं खेलकद (नाम दें)</td>
+										<td><?php echo $_SESSION['t1']?></td>
+										<td><?php echo $_SESSION['t1a']?></td>
+										<td><?php echo $_SESSION['t1b']?></td>
+									</tr>
+									<tr>
+										<td>2.</td>
+										<td>अध्ययन-यात्रा</td>
+										<td><?php echo $_SESSION['t2']?></td>
+										<td><?php echo $_SESSION['t2a']?></td>
+										<td><?php echo $_SESSION['t2b']?></td>
+									</tr>
+									<tr>
+										<td>3.</td>
+										<td>शिल्प कला</td>
+										<td><?php echo $_SESSION['t3']?></td>
+										<td><?php echo $_SESSION['t3a']?></td>
+										<td><?php echo $_SESSION['t3b']?></td>
+									</tr>
+									<tr>
+										<td>4.</td>
+										<td>संगीत/गायन</td>
+										<td><?php echo $_SESSION['t4']?></td>
+										<td><?php echo $_SESSION['t4a']?></td>
+										<td><?php echo $_SESSION['t4b']?></td>
+									</tr>
+									<tr>
+										<td>5.</td>
+										<td>नृत्य/नाटक</td>
+										<td><?php echo $_SESSION['t5']?></td>
+										<td><?php echo $_SESSION['t5a']?></td>
+										<td><?php echo $_SESSION['t5b']?></td>
+									</tr>
+									<tr>
+										<td>6.</td>
+										<td>लेखन/वाद-विवाद/कथा वर्णन </td>
+										<td><?php echo $_SESSION['t6']?></td>
+										<td><?php echo $_SESSION['t6a']?></td>
+										<td><?php echo $_SESSION['t6b']?></td>
+									</tr>
+									<tfoot>
 										<tr>
-											<td>क्रमांक</td>
-											<td>रूचि की गतिविधियां </td>
-											<td>गतिविधि की जानकारी </td>
-											<td>भाग लिया है या नहीं </td>
-											<td>नेतृत्व/भागीदारी भागीदारी की इच्छा </td>
-										</thead>
-										<tbody>
-											<tr>
-												<td>1.</td>
-												<td>क्रीडा एवं खेलकद (नाम दें)</td>
-												<td></td>
-												<td></td>
-												<td></td>
-											</tr>
-											<tr>
-												<td>2.</td>
-												<td>अध्ययन-यात्रा</td>
-												<td></td>
-												<td></td>
-												<td></td>
-											</tr>
-											<tr>
-												<td>3.</td>
-												<td>शिल्प कला</td>
-												<td></td>
-												<td></td>
-												<td></td>
-											</tr>
-											<tr>
-												<td>4.</td>
-												<td>संगीत/गायन</td>
-												<td></td>
-												<td></td>
-												<td></td>
-											</tr>
-											<tr>
-												<td>5.</td>
-												<td>नृत्य/नाटक</td>
-												<td></td>
-												<td></td>
-												<td></td>
-											</tr>
-											<tr>
-												<td>6.</td>
-												<td>लेखन/वाद-विवाद/कथा वर्णन </td>
-												<td></td>
-												<td></td>
-												<td></td>
-											</tr>
-											<tfoot>
-												<tr>
-													<td colspan="5">
-														<p>
-															मै वचन देता हूँ/ देती हूँ कि समय-समय पर विश्वविद्यालय/ महाविद्यालय/ विद्यालय रा.से.यो. द्वारा बनाये गये नियमों का पालन करूँगा/करुँगी |
-														</p>
-														<br>
-														<br>
-														<br>
-														<span style="float:left">
-															दिनांक :- 
-														</span>  
-														<span style="float:right">
-															आवेदक के हस्ताक्षर 
-														</span> 
-													</td>
-												</tr>
-											</tfoot>
-										</table>
-										<hr>
-										<center><b>(केवल कार्यालय उपयोग के लिए)</b></center>
-										<ol>
-											<li>पंजीयन का दिनांक :-</li>
-											<li>पंजीयन संख्या :- </li>
-											<li>आमान्य का कारण :- </li>
-										</ol>
-										<br>
-										<br>
-										<div style="float:right; margin-right: 15px;">
-											हस्ताक्षर कार्यक्रम अधिकारी एवं सील  
-										</div> 
+											<td colspan="5">
+												<p>
+													मै वचन <?php switch($_SESSION['gender']){
+														case 'Male' :
+														echo 'देता हूँ';
+														break;
+														case 'Female':
+														echo 'देती हूँ ';
+														break;
+														default:
+														echo '';
+													}?> कि समय-समय पर विश्वविद्यालय/ महाविद्यालय/ विद्यालय रा.से.यो. द्वारा बनाये गये नियमों का पालन <?php switch($_SESSION['gender']){
+														case 'Male' :
+														echo 'करूँगा';
+														break;
+														case 'Female':
+														echo 'करुँगी';
+														break;
+														default:
+														echo '';
+													}?> |
+												</p>
+												<br>
+												<br>
+												<br>
+												<span style="float:left">
+													<b>दिनांक :- </b><?php echo date("d/m/Y"); ?>
+												</span>  
+												<span style="float:right">
+													आवेदक के हस्ताक्षर 
+												</span> 
+											</td>
+										</tr>
+									</tfoot>
+								</table>
+								<hr>
+								<center><b>(केवल कार्यालय उपयोग के लिए)</b></center>
+								<ol>
+									<li>पंजीयन का दिनांक :-</li>
+									<li>पंजीयन संख्या :- </li>
+									<li>आमान्य का कारण :- </li>
+								</ol>
+								<br>
+								<br>
+								<div style="float:right; margin-right: 15px;">
+									हस्ताक्षर कार्यक्रम अधिकारी एवं सील  
+								</div> 
+								<br>
+								<hr>
+								
 
-										<br>
-										<br>
-										<hr>
-										<br>
-										<div align="center">
-											<button id="mybtn" class="btn btn-success" onclick="hideme();window.print();">Print</button>
-										</div>
-									</div>
-
-								</body>
-								</html>
+							</div>
+							<div align="center">
+								<button id="mybtn" class="btn btn-success" onclick="hideme();window.print();">Print</button>
+							</div>
+							<br>
+							<br>
+						</body>
+						</html>

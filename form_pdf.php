@@ -1,46 +1,53 @@
 <?php
 session_start();
+clearstatcache();
+require_once('config.php');
+$email=$_GET['email'];
+$sql = "SELECT * FROM volunteer WHERE email = '$email'";
+$result = mysqli_query($db,$sql);
+
+$row = mysqli_fetch_assoc($result);
+
 // if(!isset($_SESSION['name'])){
 // header("Location:new_reg.php");}
-if(isset($_POST['submit'])){
-	
-	$_SESSION['name']=strtoupper($_POST['name']);
-	$_SESSION['gender']=$_POST['gender'];
-	$_SESSION['category']=$_POST['category'];
-	$_SESSION['dob']=$_POST['dob'];
-	$_SESSION['bloodgrp']=$_POST['bloodgrp'];
-	$_SESSION['class']=$_POST['class'];
-	$_SESSION['branch']=$_POST['branch'];
-	$_SESSION['whatsappno']=$_POST['whatsappno'];
-	$_SESSION['altno']=$_POST['altno'];
-	$_SESSION['fathername']=strtoupper($_POST['fathername']);
-	$_SESSION['fatheroccupation']=strtoupper($_POST['fatheroccupation']);
-	$_SESSION['mothername']=strtoupper($_POST['mothername']);
-	$_SESSION['familyincome']=$_POST['familyincome'];
-	$_SESSION['caddr']=strtoupper($_POST['caddr']);
-	$_SESSION['paddr']=strtoupper($_POST['paddr']);
-	$_SESSION['is_nssV']=$_POST['is_nssV'];
-	$_SESSION['nssYear']=$_POST['nssYear'];
-	$_SESSION['t1']=$_POST['t1'];
-	$_SESSION['t1a']=$_POST['t1a'];
-	$_SESSION['t1b']=$_POST['t1b'];
-	$_SESSION['t2']=$_POST['t2'];
-	$_SESSION['t2a']=$_POST['t2a'];
-	$_SESSION['t2b']=$_POST['t2b'];
-	$_SESSION['t3']=$_POST['t3'];
-	$_SESSION['t3a']=$_POST['t3a'];
-	$_SESSION['t3b']=$_POST['t3b'];
-	$_SESSION['t4']=$_POST['t4'];
-	$_SESSION['t4a']=$_POST['t4a'];
-	$_SESSION['t4b']=$_POST['t4b'];
-	$_SESSION['t5']=$_POST['t5'];
-	$_SESSION['t5a']=$_POST['t5a'];
-	$_SESSION['t5b']=$_POST['t5b'];
-	$_SESSION['t6']=$_POST['t6'];
-	$_SESSION['t6a']=$_POST['t6a'];
-	$_SESSION['t6b']=$_POST['t6b'];
-	
-}
+// if(isset($row['submit'])){
+
+$_SESSION['name']=strtoupper($row['name']);
+$_SESSION['gender']=$row['gender'];
+$_SESSION['category']=$row['category'];
+$_SESSION['dob']=$row['dob'];
+$_SESSION['bloodgrp']=$row['bloodgrp'];
+$_SESSION['class']=$row['class'];
+$_SESSION['branch']=$row['branch'];
+$_SESSION['whatsappno']=$row['whatsappno'];
+$_SESSION['altno']=$row['altno'];
+$_SESSION['fathername']=strtoupper($row['fathername']);
+$_SESSION['fatheroccupation']=strtoupper($row['fatheroccupation']);
+$_SESSION['mothername']=strtoupper($row['mothername']);
+$_SESSION['familyincome']=$row['familyincome'];
+$_SESSION['caddr']=strtoupper($row['caddr']);
+$_SESSION['paddr']=strtoupper($row['paddr']);
+$_SESSION['is_nssV']=$row['is_nssV'];
+$_SESSION['nssYear']=$row['nssYear'];
+$_SESSION['t1']=$row['t1'];
+$_SESSION['t1a']=$row['t1a'];
+$_SESSION['t1b']=$row['t1b'];
+$_SESSION['t2']=$row['t2'];
+$_SESSION['t2a']=$row['t2a'];
+$_SESSION['t2b']=$row['t2b'];
+$_SESSION['t3']=$row['t3'];
+$_SESSION['t3a']=$row['t3a'];
+$_SESSION['t3b']=$row['t3b'];
+$_SESSION['t4']=$row['t4'];
+$_SESSION['t4a']=$row['t4a'];
+$_SESSION['t4b']=$row['t4b'];
+$_SESSION['t5']=$row['t5'];
+$_SESSION['t5a']=$row['t5a'];
+$_SESSION['t5b']=$row['t5b'];
+$_SESSION['t6']=$row['t6'];
+$_SESSION['t6a']=$row['t6a'];
+$_SESSION['t6b']=$row['t6b'];
+$_SESSION['sign']=$row['sign'];
 ?>
 <!DOCTYPE html>
 
@@ -50,13 +57,9 @@ if(isset($_POST['submit'])){
 	
 	<title>NSS Registration 2019-20_<?php echo $_SESSION['name'];?>_<?php echo date("d-m-y");?></title>
 	<link rel="icon" type="image/jpg" href="nsslogo.png">
-	<meta name="google" content="notranslate">
+	<!-- <meta name="google" content="notranslate"> -->
 	<meta charset="utf-8">
-	<!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
-	<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script> -->
+
 	<?php include 'include/link.html';?>
 	<style type="text/css">
 		li{
@@ -76,6 +79,7 @@ if(isset($_POST['submit'])){
 			font-family: serif;
 			border-bottom: 1px solid black;"
 		}
+		
 	</style>
 	<script>
 		function hideme()
@@ -90,9 +94,9 @@ if(isset($_POST['submit'])){
 </head>
 <!-- <body oncontextmenu="return false" onselectstart="return false" ondragstart="return false"> -->
 	<body>
-		<div class="container" style="margin:auto; border: 2px solid black; margin-top:30px; margin-bottom: 20px;width:950px;" >
+		<div class="container" style="border: 2px solid black; margin-top:20px; margin-bottom: 10px;" >
 			<p align="center">
-				<img style="height:90px;"src="res/images/nsslogo.png"/><br>
+				<img style="height:85px;"src="res/images/nsslogo.png"/><br>
 
 				<span style="font-size:22px;">राष्ट्रीय सेवा योजना<br/>
 					<b id="a">देवी अहिल्या विश्वविद्यालय, इंदौर</b></span>
@@ -281,9 +285,8 @@ if(isset($_POST['submit'])){
 					<li>
 						<div class="row">
 							<div class="col-md-6">
-								<b>एन.एस.एस./ एन.सी.सी. में से किसी एक के सदस्य हैं :-</b>
-							</div>
-							<div class="col-md-1">
+								<b>एन.एस.एस./ एन.सी.सी. में से किसी एक के सदस्य हैं:-</b>
+							
 								<?php switch ($_SESSION['is_nssV']) {
 									case 'Yes':
 									echo 'हाँ';
@@ -296,18 +299,20 @@ if(isset($_POST['submit'])){
 									break;
 								};?>
 							</div>
+							<?php if($_SESSION['is_nssV']=='Yes'){
+								?><div class="col-md-6">
+									<b>किस वर्ष से:- </b>
+									<span class="data">
+										<?php echo $_SESSION['nssYear'];?>
+									</span>
+									से
+								</div>
+							<?php }?>
 						</div>
-						<span style="margin-left: 60%">
-							<b>(यदि हाँ तो कब से) :- </b>
-							<span class="data">
-								<?php echo $_SESSION['nssYear'];?>
-							</span>
-							से 
-						</span>
 					</li>
 					<li>
 						<b>गतिविधियां जिनमें रूचि हो :-</b>
-						<table class="table table-bordered table-responsive">
+						<table class="table table-bordered ">
 							<thead>
 								<tr>
 									<td>क्रमांक</td>
@@ -362,7 +367,7 @@ if(isset($_POST['submit'])){
 									<tfoot>
 										<tr>
 											<td colspan="5">
-												<p>
+												<p style="font-weight: 700">
 													मै वचन <?php switch($_SESSION['gender']){
 														case 'Male' :
 														echo 'देता हूँ';
@@ -383,15 +388,30 @@ if(isset($_POST['submit'])){
 														echo '';
 													}?> |
 												</p>
+												
 												<br>
-												<br>
-												<br>
-												<span style="float:left">
+												<div class="row">
+													<div class="col-md-6">
+														<b>दिनांक :- </b><?php echo date("d/m/Y"); ?>
+													</div>
+													<div class="col-md-6">
+														<div align="right">
+															<img style="border: 1px solid black;" src="SumitSign.PNG" height="60px;" width="250px">
+														</div>
+														<div style="height: 50%;" align="right">
+															<?php echo $row['sign']?>
+															आवेदक के हस्ताक्षर 
+														</div>
+													</div>
+												</div>
+												<!-- <span style="float:left">
 													<b>दिनांक :- </b><?php echo date("d/m/Y"); ?>
 												</span>  
 												<span style="float:right">
+													<img src="res/images/ietlogo.png" height="100px" width="100px" style="float:left;">
+													<?php echo $row['sign']?>
 													आवेदक के हस्ताक्षर 
-												</span> 
+												</span> --> 
 											</td>
 										</tr>
 									</tfoot>
@@ -399,8 +419,8 @@ if(isset($_POST['submit'])){
 								<hr>
 								<center><b>(केवल कार्यालय उपयोग के लिए)</b></center>
 								<ol>
-									<li>पंजीयन का दिनांक :-</li>
-									<li>पंजीयन संख्या :- </li>
+									<li>पंजीयन का दिनांक :- <?php echo date("d/m/Y"); ?></li>
+									<li>पंजीयन संख्या :- NSS/DAVV/IET/<?php echo $row['reg_no'];?></li>
 									<li>आमान्य का कारण :- </li>
 								</ol>
 								<br>

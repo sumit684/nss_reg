@@ -1,0 +1,41 @@
+<?php session_start();
+if(isset($_POST['form_submit'])){
+	
+	$_SESSION['name']=strtoupper($_POST['name']);
+	$_SESSION['gender']=$_POST['gender'];
+	$_SESSION['category']=$_POST['category'];
+	$_SESSION['dob']=$_POST['dob'];
+	$_SESSION['bloodgrp']=$_POST['bloodgrp'];
+	$_SESSION['class']=$_POST['class'];
+	$_SESSION['branch']=$_POST['branch'];
+	$_SESSION['whatsappno']=$_POST['whatsappno'];
+	$_SESSION['altno']=$_POST['altno'];
+	$_SESSION['fathername']=strtoupper($_POST['fathername']);
+	$_SESSION['fatheroccupation']=strtoupper($_POST['fatheroccupation']);
+	$_SESSION['mothername']=strtoupper($_POST['mothername']);
+	$_SESSION['familyincome']=$_POST['familyincome'];
+	$_SESSION['caddr']=strtoupper($_POST['caddr']);
+	$_SESSION['paddr']=strtoupper($_POST['paddr']);
+	$_SESSION['is_nssV']=$_POST['is_nssV'];
+	$_SESSION['nssYear']=$_POST['nssYear'];
+	$_SESSION['t1']=$_POST['t1'];
+	$_SESSION['t1a']=$_POST['t1a'];
+	$_SESSION['t1b']=$_POST['t1b'];
+	$_SESSION['t2']=$_POST['t2'];
+	$_SESSION['t2a']=$_POST['t2a'];
+	$_SESSION['t2b']=$_POST['t2b'];
+	$_SESSION['t3']=$_POST['t3'];
+	$_SESSION['t3a']=$_POST['t3a'];
+	$_SESSION['t3b']=$_POST['t3b'];
+	$_SESSION['t4']=$_POST['t4'];
+	$_SESSION['t4a']=$_POST['t4a'];
+	$_SESSION['t4b']=$_POST['t4b'];
+	$_SESSION['t5']=$_POST['t5'];
+	$_SESSION['t5a']=$_POST['t5a'];
+	$_SESSION['t5b']=$_POST['t5b'];
+	$_SESSION['t6']=$_POST['t6'];
+	$_SESSION['t6a']=$_POST['t6a'];
+	$_SESSION['t6b']=$_POST['t6b'];
+	
+}
+?>

@@ -2,7 +2,10 @@
 session_start();
 clearstatcache();
 require_once('config.php');
-$email=$_GET['email'];
+if(!isset($_SESSION['email'])){
+	header('Location: index.php');
+}
+$email=$_SESSION['email'];
 $sql = "SELECT * FROM volunteer WHERE email = '$email'";
 $result = mysqli_query($db,$sql);
 
@@ -47,7 +50,7 @@ $_SESSION['t5b']=$row['t5b'];
 $_SESSION['t6']=$row['t6'];
 $_SESSION['t6a']=$row['t6a'];
 $_SESSION['t6b']=$row['t6b'];
-$_SESSION['sign']=$row['sign'];
+$_SESSION['timestamp']=$row['timestamp'];
 ?>
 <!DOCTYPE html>
 
@@ -55,13 +58,14 @@ $_SESSION['sign']=$row['sign'];
 <head>
 	
 	
-	<title>NSS Registration 2019-20_<?php echo $_SESSION['name'];?>_<?php echo date("d-m-y");?></title>
+	<title>NSS Registration 2019-20_<?php echo $_SESSION['name'];?>_<?php echo $_SESSION['timestamp'];?></title>
 	<link rel="icon" type="image/jpg" href="nsslogo.png">
 	<!-- <meta name="google" content="notranslate"> -->
 	<meta charset="utf-8">
 
 	<?php include 'include/link.html';?>
 	<style type="text/css">
+		
 		li{
 			margin-left: 20px;
 			padding-left: 20px;
@@ -84,7 +88,8 @@ $_SESSION['sign']=$row['sign'];
 	<script>
 		function hideme()
 		{
-      document.getElementById('mybtn').style.display ='none'; //first hide the button
+			document.getElementById('mybtn').style.display ='none';
+			document.getElementById('alert').style.display ='none';  
       setTimeout(function(){ //using setTimeout function
       document.getElementById('mybtn').style.display ='block'; //displaying the button again after 1000ms or 1 seconds
   }
@@ -94,7 +99,12 @@ $_SESSION['sign']=$row['sign'];
 </head>
 <!-- <body oncontextmenu="return false" onselectstart="return false" ondragstart="return false"> -->
 	<body>
+
 		<div class="container" style="border: 2px solid black; margin-top:20px; margin-bottom: 10px;" >
+			<div class="alert alert-success alert-dismissible fade show" id="alert">
+				<button type="button" class="close" data-dismiss="alert">&times;</button>
+				<strong>Congratulations</strong> Your Registration form was successfully submitted. <b>Your Registration number is <?php echo $row['reg_no'];?>.</b><br>Save this form in PDF format. 
+			</div>
 			<p align="center">
 				<img style="height:85px;"src="res/images/nsslogo.png"/><br>
 
@@ -114,9 +124,9 @@ $_SESSION['sign']=$row['sign'];
 								<b>छात्र/छात्रा  का नाम :- </b>
 							</div>
 
-							<div class="col-md-5 data">
+							<span class="col-md-5 data">
 								<?php echo $_SESSION['name']?>
-							</div>
+							</span>
 						</div>
 					</li>
 					<li>
@@ -174,6 +184,14 @@ $_SESSION['sign']=$row['sign'];
 									echo '';
 								}
 								?>  
+							</div>
+							<div class="col-md-1">
+							</div>
+							<div class="col-md-1">
+								<b>लिंग :-</b>
+							</div>
+							<div class="col-md-2 data">
+								<?php echo $_SESSION['gender'];?>
 							</div>
 						</div>
 					</li>
@@ -286,7 +304,7 @@ $_SESSION['sign']=$row['sign'];
 						<div class="row">
 							<div class="col-md-6">
 								<b>एन.एस.एस./ एन.सी.सी. में से किसी एक के सदस्य हैं:-</b>
-							
+
 								<?php switch ($_SESSION['is_nssV']) {
 									case 'Yes':
 									echo 'हाँ';
@@ -324,7 +342,7 @@ $_SESSION['sign']=$row['sign'];
 								<tbody>
 									<tr>
 										<td>1.</td>
-										<td>क्रीडा एवं खेलकद (नाम दें)</td>
+										<td>क्रीडा एवं खेलकुद (नाम दें)</td>
 										<td><?php echo $_SESSION['t1']?></td>
 										<td><?php echo $_SESSION['t1a']?></td>
 										<td><?php echo $_SESSION['t1b']?></td>
@@ -390,16 +408,17 @@ $_SESSION['sign']=$row['sign'];
 												</p>
 												
 												<br>
-												<div class="row">
+												<div class="row" style="margin-top: 50px;">
 													<div class="col-md-6">
 														<b>दिनांक :- </b><?php echo date("d/m/Y"); ?>
 													</div>
 													<div class="col-md-6">
-														<div align="right">
-															<img style="border: 1px solid black;" src="SumitSign.PNG" height="60px;" width="250px">
+														<div style="height: 50%;" align="right" >
+															<!-- <img style="border: 1px solid black;" src="" height="60px;" width="250px"> -->
+
 														</div>
 														<div style="height: 50%;" align="right">
-															<?php echo $row['sign']?>
+
 															आवेदक के हस्ताक्षर 
 														</div>
 													</div>
@@ -419,8 +438,8 @@ $_SESSION['sign']=$row['sign'];
 								<hr>
 								<center><b>(केवल कार्यालय उपयोग के लिए)</b></center>
 								<ol>
-									<li>पंजीयन का दिनांक :- <?php echo date("d/m/Y"); ?></li>
-									<li>पंजीयन संख्या :- NSS/DAVV/IET/<?php echo $row['reg_no'];?></li>
+									<li>पंजीयन का दिनांक :- <?php echo $_SESSION['timestamp'];?></li>
+									<li>पंजीयन संख्या :- NSS/19/<?php echo $row['reg_no'];?></li>
 									<li>आमान्य का कारण :- </li>
 								</ol>
 								<br>

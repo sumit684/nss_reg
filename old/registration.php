@@ -130,7 +130,7 @@
 		<h2>IET-DAVV</h2>
 		<h3>Volunteer Registration Form</h3>
 
-		<form class="card" method="post" action="submitform.php">
+		<form class="card" method="post" action="submitform.php" enctype="multipart/form-data">
 			<div id="data">
 				<div class="form-group row">
 
@@ -539,7 +539,7 @@
 
 
 			<div class="custom-file">
-				<input type="file" class="custom-file-input" id="file-input" name="sign" accept=".png,.jpeg,.jpg">
+				<input type="file" class="custom-file-input" id="file-input" name="fileToUpload" accept=".png,.jpeg,.jpg">
 				<label class="custom-file-label" for="customFile">Upload your Signature</label>
 
 				<div id="thumb-output" align="center"></div>

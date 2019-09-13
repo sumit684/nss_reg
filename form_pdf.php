@@ -63,7 +63,14 @@ $_SESSION['timestamp']=$row['timestamp'];
 	<!-- <meta name="google" content="notranslate"> -->
 	<meta charset="utf-8">
 
-	<?php include 'include/link.html';?>
+	<link rel="icon" type="image/jpg" href="res/images/nsslogo.png">
+	<meta charset="utf-8">
+<!-- 	<meta name="viewport" content="width=device-width, initial-scale=1"> -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
 	<style type="text/css">
 		
 		li{
@@ -76,6 +83,7 @@ $_SESSION['timestamp']=$row['timestamp'];
 		}
 		.container{
 			padding: 5px;
+			min-width: 850px;
 		}
 		
 		.data{
@@ -89,9 +97,11 @@ $_SESSION['timestamp']=$row['timestamp'];
 		function hideme()
 		{
 			document.getElementById('mybtn').style.display ='none';
+			document.getElementById('mybtn2').style.display ='none';
 			document.getElementById('alert').style.display ='none';  
       setTimeout(function(){ //using setTimeout function
       document.getElementById('mybtn').style.display ='block'; //displaying the button again after 1000ms or 1 seconds
+      document.getElementById('mybtn2').style.display ='block';
   }
   ,1000); 
   }
@@ -306,8 +316,11 @@ $_SESSION['timestamp']=$row['timestamp'];
 								<b>एन.एस.एस./ एन.सी.सी. में से किसी एक के सदस्य हैं:-</b>
 
 								<?php switch ($_SESSION['is_nssV']) {
-									case 'Yes':
-									echo 'हाँ';
+									case 'Yes (NSS)':
+									echo 'हाँ (एन.एस.एस.)';
+									break;
+									case 'Yes (NCC)':
+									echo 'हाँ (एन.सी.सी.)';
 									break;
 									case 'No':
 									echo 'नहीं';
@@ -317,7 +330,7 @@ $_SESSION['timestamp']=$row['timestamp'];
 									break;
 								};?>
 							</div>
-							<?php if($_SESSION['is_nssV']=='Yes'){
+							<?php if($_SESSION['is_nssV']!='No'){
 								?><div class="col-md-6">
 									<b>किस वर्ष से:- </b>
 									<span class="data">
@@ -337,7 +350,7 @@ $_SESSION['timestamp']=$row['timestamp'];
 									<td>रूचि की गतिविधियां </td>
 									<td>गतिविधि की जानकारी </td>
 									<td>भाग लिया है या नहीं </td>
-									<td>नेतृत्व/भागीदारी भागीदारी की इच्छा </td>
+									<td>नेतृत्व/भागीदारी की इच्छा </td>
 								</thead>
 								<tbody>
 									<tr>
@@ -454,6 +467,8 @@ $_SESSION['timestamp']=$row['timestamp'];
 							</div>
 							<div align="center">
 								<button id="mybtn" class="btn btn-success" onclick="hideme();window.print();">Print</button>
+								<br>
+								<a href="logout.php"><button id="mybtn2" class="btn btn-info" style="margin-top: 10px;">Logout</button></a>
 							</div>
 							<br>
 							<br>

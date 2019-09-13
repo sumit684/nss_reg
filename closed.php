@@ -21,6 +21,9 @@
 			<h3>In Case of any query please contact<br> Prof. Tapesh Sarsodia <br> +91 9977036581
 			</h3>
 		</div>
+		<div align="center">
+			<a href="login.php"><button class="btn btn-primary">Login</button></a>
+		</div>
 	</div>
 </body>
 </html>

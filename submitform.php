@@ -106,6 +106,7 @@ if (mysqli_query($db, $sql)) {
 	}else{
 		// echo "Error: " . $sql . "<br>" . mysqli_error($db);
 		echo "<h1 style='color:red;'> Some Error has occured. Your FORM was not submitted.<br> TRY AGAIN!!!</h1><a href='register.php'><button>Registration Page</button></a>";
+		echo "Error: ". mysqli_error($db);
 	}
 }
 
